@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "esnext",
+    "lib": ["esnext", "DOM"],
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "jsx": "preserve"
+  },
+  "exclude": ["examples/**"]
+}

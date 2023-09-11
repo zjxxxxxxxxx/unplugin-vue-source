@@ -1,0 +1,103 @@
+{
+  "name": "unplugin-vue-source",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.6.8",
+  "description": "Add a __source prop to all Elements",
+  "author": "zjxxxxxxxxx <954270063@qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/zjxxxxxxxxx/unplugin-vue-source",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zjxxxxxxxxx/unplugin-vue-source"
+  },
+  "bugs": "https://github.com/zjxxxxxxxxx/unplugin-vue-source/issues",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./nuxt": {
+      "types": "./dist/nuxt.d.ts",
+      "require": "./dist/nuxt.js",
+      "import": "./dist/nuxt.mjs"
+    },
+    "./resolvers": {
+      "types": "./dist/resolvers.d.ts",
+      "require": "./dist/resolvers.js",
+      "import": "./dist/resolvers.mjs"
+    },
+    "./rollup": {
+      "types": "./dist/rollup.d.ts",
+      "require": "./dist/rollup.js",
+      "import": "./dist/rollup.mjs"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "require": "./dist/types.js",
+      "import": "./dist/types.mjs"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "require": "./dist/vite.js",
+      "import": "./dist/vite.mjs"
+    },
+    "./webpack": {
+      "types": "./dist/webpack.d.ts",
+      "require": "./dist/webpack.js",
+      "import": "./dist/webpack.mjs"
+    },
+    "./rspack": {
+      "types": "./dist/rspack.d.ts",
+      "require": "./dist/rspack.js",
+      "import": "./dist/rspack.mjs"
+    },
+    "./esbuild": {
+      "types": "./dist/esbuild.d.ts",
+      "require": "./dist/esbuild.js",
+      "import": "./dist/esbuild.mjs"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "require": "./dist/vue.js",
+      "import": "./dist/vue.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "play": "pnpm --filter @examples/vite dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@vue/compiler-dom": "^3.3.4",
+    "magic-string": "^0.30.3",
+    "unplugin": "^1.4.0",
+    "unplugin-vue-source": "link:"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+}

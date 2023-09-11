@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "@examples/webpack",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "unplugin-vue-source": "workspace:*",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "typescript": "~4.5.5"
+  }
+}
