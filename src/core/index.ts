@@ -1,51 +1,32 @@
-import { relative } from "path";
 import type { UnpluginFactory } from "unplugin";
 import { createUnplugin } from "unplugin";
-import { parse, transform } from "@vue/compiler-dom";
-import MagicString from "magic-string";
 import type { Options } from "../types";
-import { ElementTypes, NodeTypes, TRACE_ID } from "./constants";
+import { parse_ID } from "./parse_ID";
+import { transform_SFC } from "./transform_SFC";
+// import { transform_JSX } from "./transform_JSX";
 
-const filterRE = /.(vue|jsx|tsx)$/;
-const TagTypes = [ElementTypes.ELEMENT, ElementTypes.COMPONENT];
+const includeRE = /.((vue\?vue)|(vue|jsx|tsx)$)/;
 
 export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
-  const { rootDir = process.cwd() } = options;
-
   if (process.env.NODE_ENV !== "development") {
     return {
       name: "unplugin-vue-source",
     };
   }
 
+  const { rootDir = process.cwd() } = options;
+
   return {
     name: "unplugin-vue-source",
     enforce: "pre",
     transformInclude(id) {
-      return filterRE.test(id);
+      return includeRE.test(id);
     },
-    transform(raw, id) {
-      const relativePath = `/${relative(rootDir, id)}`;
-
-      const s = new MagicString(raw);
-      transform(parse(raw), {
-        nodeTransforms: [
-          (node) => {
-            if (
-              node.type === NodeTypes.ELEMENT &&
-              TagTypes.includes(node.tagType as any)
-            ) {
-              const { line, column, offset } = node.loc.start;
-              const startIndex = offset + node.tag.length + 1;
-              s.prependLeft(
-                startIndex,
-                ` ${TRACE_ID}="${relativePath}:${line}:${column}"`
-              );
-            }
-          },
-        ],
-      });
-      return s.toString();
+    transform(code, id) {
+      const { filename, query } = parse_ID(id, rootDir);
+      if (!query.type || query.type === "template") {
+        return transform_SFC(filename, code);
+      }
     },
   };
 };
