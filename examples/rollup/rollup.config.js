@@ -26,6 +26,7 @@ export default {
     format: "esm",
   },
   plugins: [
+    VueSource({}),
     vue({
       exposeFilename: true,
     }),
@@ -46,7 +47,6 @@ export default {
     svg({
       base64: true,
     }),
-    VueSource({}),
     liveServer({
       port: 3000,
       wait: 1000,
