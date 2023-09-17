@@ -1,29 +1,30 @@
 import { extname } from "path";
+import { TRACE_ID } from "./constants";
 
-export interface VueQuery {
+export interface VueQuery extends Record<string, any> {
   vue?: boolean;
-  src?: string;
   type?: "script" | "template" | "style" | "custom";
-  lang?: string;
+  [TRACE_ID]?: string;
 }
 
-export function parse_ID(
-  id: string,
-  rootDir: string
-): {
-  filename: string;
-  ext: string;
-  query: VueQuery;
-} {
-  const [filename, rawQuery] = id.split(`?`, 2);
-  const query = Object.fromEntries(new URLSearchParams(rawQuery)) as VueQuery;
+export function parse_ID(id: string, root = "") {
+  const [file, rawQuery] = id.split("?", 2);
+
+  const ext = extname(file).slice(1);
+  const isSfc = ext === "vue";
+  const isTsx = ext === "tsx";
+  const isJsx = isTsx || ext === "jsx";
+
+  const query = Object.fromEntries(new URLSearchParams(rawQuery)) as VueQuery
   if (query.vue != null) {
     query.vue = true;
   }
 
   return {
-    filename: filename.replace(rootDir, ""),
-    ext: extname(filename).slice(1),
+    file: file.replace(root, ""),
+    isSfc,
+    isTsx,
+    isJsx,
     query,
   };
 }

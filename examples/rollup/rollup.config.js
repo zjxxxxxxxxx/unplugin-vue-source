@@ -4,9 +4,10 @@ import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
 import postcss from "rollup-plugin-postcss";
 import svg from "rollup-plugin-svg";
-import vue from "rollup-plugin-vue";
-import { liveServer } from "rollup-plugin-live-server";
+import Vue2 from "unplugin-vue2/rollup";
+import VueJsx from "unplugin-vue-jsx/rollup";
 import VueSource from "unplugin-vue-source/rollup";
+import { liveServer } from "rollup-plugin-live-server";
 
 const extensions = [
   ".js",
@@ -26,10 +27,13 @@ export default {
     format: "esm",
   },
   plugins: [
-    VueSource({}),
-    vue({
-      exposeFilename: true,
+    VueSource(),
+    VueJsx({
+      version: 2,
     }),
+    Vue2(),
+    postcss(),
+    
     commonjs(),
     resolve({
       extensions,
@@ -37,13 +41,12 @@ export default {
     replace({
       preventAssignment: true,
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-    }),
+    }), 
     babel({
       babelHelpers: "bundled",
       extensions,
       presets: ["@babel/preset-env", "@babel/preset-typescript"],
     }),
-    postcss(),
     svg({
       base64: true,
     }),

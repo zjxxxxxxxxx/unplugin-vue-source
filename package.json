@@ -84,19 +84,26 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "play": "pnpm --filter @examples/vite dev",
+    "prepublishOnly": "pnpm build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp && npm publish"
   },
   "dependencies": {
-    "@vue/compiler-dom": "^3.3.4",
     "magic-string": "^0.30.3",
-    "unplugin": "^1.4.0",
-    "unplugin-vue-source": "link:"
+    "unplugin": "^1.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/parser": "^7.22.16",
+    "@babel/plugin-syntax-jsx": "^7.22.5",
+    "@babel/plugin-syntax-typescript": "^7.22.5",
+    "@types/babel__core": "^7.20.2",
     "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
+    "@vue/compiler-dom": "^3.3.4",
+    "bumpp": "^9.2.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }

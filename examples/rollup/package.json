@@ -20,8 +20,9 @@
     "rollup-plugin-live-server": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-svg": "^2.0.0",
-    "rollup-plugin-vue": "^5.0.0",
     "typescript": "^2.2.0",
-    "unplugin-vue-source": "workspace:*"
+    "unplugin-vue-jsx": "^0.2.2",
+    "unplugin-vue-source": "workspace:*",
+    "unplugin-vue2": "^0.1.1"
   }
 }

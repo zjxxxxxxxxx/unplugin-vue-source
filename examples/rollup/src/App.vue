@@ -1,11 +1,12 @@
-<script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script lang="tsx">
+import Vue from "vue";
+import HelloWorld from "./components/HelloWorld";
 
 export default Vue.extend({
   components: {
     HelloWorld,
   },
+
 });
 </script>
 
@@ -19,7 +20,7 @@ export default Vue.extend({
         <img src="../public/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
-    <HelloWorld msg="Rollup + Vue2" />
+    <HelloWorld msg="Roolup + Vue" />
   </div>
 </template>
 
@@ -30,9 +31,11 @@ export default Vue.extend({
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }

@@ -1,8 +1,14 @@
 export interface Options {
   /**
-   * source rootDir path
+   * source root path
    *
    * @default process.cwd()
    */
-  rootDir?: string;
+  root?: string;
+  /**
+   * generate sourceMap
+   * 
+   * @default false
+   */
+  sourceMap?: boolean;
 }
