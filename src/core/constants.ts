@@ -9,4 +9,4 @@ export const ElementTypes = <const>{
   COMPONENT: 1,
 };
 
-export const TagTypes = [ElementTypes.ELEMENT, ElementTypes.COMPONENT];
+export const TagTypes = <number[]>[ElementTypes.ELEMENT, ElementTypes.COMPONENT];
