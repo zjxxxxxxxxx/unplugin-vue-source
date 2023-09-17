@@ -26,8 +26,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
       const parsed = parse_ID(id, root);
       if (parsed.isSfc) {
         transform_SFC(code, s, parsed);
-      }
-      if (parsed.isJsx) {
+      } else if (parsed.isJsx) {
         transform_JSX(code, s, parsed);
       }
 

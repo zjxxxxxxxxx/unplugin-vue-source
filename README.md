@@ -7,12 +7,14 @@ Add a \_\_source prop to all Elements.
 - ✨ JSX support in `.vue`, `.jsx`, `.tsx`.
 - 😃 Supports `Vite`, `Webpack`, `Rspack`, `Vue CLI`, `Rollup`, `esbuild`.
 
+> For development only
+
 ---
 
 sfc without
 
 ```html
-<!-- /src/App.vue -->
+<!-- src/App.vue -->
 <template>
   <div>hello word</div>
 </template>
@@ -21,7 +23,7 @@ sfc without
 with
 
 ```html
-<!-- /src/App.vue -->
+<!-- src/App.vue -->
 <template>
   <div __source="/src/App.vue:3:3">hello word</div>
 </template>
@@ -32,8 +34,8 @@ with
 jsx without
 
 ```tsx
-// /src/App.vue
-export default App() {
+// src/App.vue
+export default function App() {
   return <div>hello word</div>
 }
 ```
@@ -41,8 +43,8 @@ export default App() {
 with
 
 ```tsx
-// /src/App.vue
-export default App() {
+// src/App.vue
+export default function App() {
   return <div __source="/src/App.vue:3:9">hello word</div>
 }
 ```
