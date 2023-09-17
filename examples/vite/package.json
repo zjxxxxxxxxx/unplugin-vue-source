@@ -11,9 +11,10 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "unplugin-vue-source": "workspace:*",
     "@vitejs/plugin-vue": "^4.2.3",
     "typescript": "^5.0.2",
+    "unplugin-vue-jsx": "^0.2.2",
+    "unplugin-vue-source": "workspace:*",
     "vite": "^4.4.5"
   }
 }
