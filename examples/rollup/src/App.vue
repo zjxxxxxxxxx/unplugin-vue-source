@@ -1,12 +1,11 @@
 <script lang="tsx">
-import Vue from "vue";
-import HelloWorld from "./components/HelloWorld";
+import Vue from 'vue';
+import HelloWorld from './components/HelloWorld';
 
 export default Vue.extend({
   components: {
     HelloWorld,
   },
-
 });
 </script>
 

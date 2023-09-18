@@ -1,2 +1,2 @@
-import unplugin from "./core";
+import unplugin from './core';
 export default unplugin.esbuild;
