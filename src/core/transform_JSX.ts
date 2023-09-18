@@ -1,34 +1,27 @@
-import { traverse, types as t } from "@babel/core";
-import { parse, ParserPlugin } from "@babel/parser";
-import MagicString from "magic-string";
-import { TRACE_ID } from "./constants";
+import type { Position } from '@vue/compiler-dom';
+
+import { traverse, types as t } from '@babel/core';
+import { parse, ParserPlugin } from '@babel/parser';
 
 export function transform_JSX(
   code: string,
-  s: MagicString,
+  transformer: (pos: Position) => void,
   options: {
-    file: string;
     isTsx?: boolean;
     startIndex?: number;
     startLine?: number;
     startColumn?: number;
-  }
+  },
 ) {
-  const {
-    file,
-    isTsx,
-    startIndex = 0,
-    startLine = 1,
-    startColumn = 0,
-  } = options;
+  const { isTsx, startIndex = 0, startLine = 1, startColumn = 0 } = options;
 
-  const plugins: ParserPlugin[] = ["jsx"];
+  const plugins: ParserPlugin[] = ['jsx'];
   if (isTsx) {
-    plugins.push("typescript");
+    plugins.push('typescript');
   }
 
   const ast = parse(code, {
-    sourceType: "unambiguous",
+    sourceType: 'unambiguous',
     plugins,
     startLine,
     startColumn,
@@ -41,16 +34,18 @@ export function transform_JSX(
         return;
       }
 
-      const { index, line, column } = node.loc!.start;
+      const { start } = node.loc!;
       const name = getJSXElementName(nameNode);
-      const prependIndex = index + startIndex + name.length + 1;
-      s.prependLeft(prependIndex, ` ${TRACE_ID}="${file}:${line}:${column}"`);
+      transformer({
+        ...start,
+        offset: start.index + startIndex + name.length + 1,
+      });
     },
   });
 }
 
 export function getJSXElementName(
-  nameNode: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName
+  nameNode: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName,
 ) {
   let nameValue: string;
 
@@ -73,7 +68,7 @@ export function getJSXElementName(
     }
     nameValues.unshift(nameNode.name);
 
-    nameValue = nameValues.join(".");
+    nameValue = nameValues.join('.');
   }
 
   return nameValue;

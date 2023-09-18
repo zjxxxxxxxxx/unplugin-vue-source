@@ -34,7 +34,7 @@ with
 jsx without
 
 ```tsx
-// src/App.vue
+// src/App.tsx
 export default function App() {
   return <div>hello word</div>
 }
@@ -43,9 +43,9 @@ export default function App() {
 with
 
 ```tsx
-// src/App.vue
+// src/App.tsx
 export default function App() {
-  return <div __source="/src/App.vue:3:9">hello word</div>
+  return <div __source="/src/App.tsx:3:9">hello word</div>
 }
 ```
 
