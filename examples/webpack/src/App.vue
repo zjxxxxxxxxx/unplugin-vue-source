@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import HelloWorld from "./components/HelloWorld";
+import HelloWorld from './components/HelloWorld';
 </script>
 
 <template>

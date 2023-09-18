@@ -7,7 +7,7 @@ export interface Options {
   root?: string;
   /**
    * generate sourceMap
-   * 
+   *
    * @default false
    */
   sourceMap?: boolean;

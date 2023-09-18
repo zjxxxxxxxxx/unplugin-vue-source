@@ -85,8 +85,9 @@
     "dev": "tsup --watch",
     "play": "pnpm --filter @examples/vite dev",
     "prepublishOnly": "pnpm build",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "prettier -c '**/*.{ts,tsx,vue}'",
+    "format": "prettier -w '**/*.{ts,tsx,vue}'",
+    "typecheck": "tsc --noEmit",
     "release": "bumpp && npm publish"
   },
   "dependencies": {
@@ -100,11 +101,10 @@
     "@babel/plugin-syntax-typescript": "^7.22.5",
     "@types/babel__core": "^7.20.2",
     "@types/node": "^20.6.0",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
     "@vue/compiler-dom": "^3.3.4",
     "bumpp": "^9.2.0",
     "changelogithub": "^0.13.0",
+    "prettier": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
