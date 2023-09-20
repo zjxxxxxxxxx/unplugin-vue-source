@@ -14,7 +14,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "typescript": "^5.0.2",
     "unplugin-vue-jsx": "^0.2.2",
-    "unplugin-vue-source": "workspace:*",
+    "unplugin-vue-source": "latest",
     "vite": "^4.4.5"
   }
 }

@@ -1,5 +1,9 @@
 # unplugin-vue-source
 
+[![CI](https://github.com/zjxxxxxxxxx/unplugin-vue-source/actions/workflows/ci.yml/badge.svg)](https://github.com/zjxxxxxxxxx/unplugin-vue-source/actions/workflows/ci.yml)
+[![NPM version](https://img.shields.io/npm/v/unplugin-vue-source?color=)](https://www.npmjs.com/package/unplugin-vue-source)
+[![MIT](https://img.shields.io/github/license/zjxxxxxxxxx/unplugin-vue-source)](https://opensource.org/licenses/MIT)
+
 Add a \_\_source prop to all Elements.
 
 - 🌈 Supports `Vue2` and `Vue3`.
