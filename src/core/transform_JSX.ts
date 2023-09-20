@@ -1,5 +1,4 @@
 import type { Position } from '@vue/compiler-dom';
-
 import { traverse, types as t } from '@babel/core';
 import { parse, ParserPlugin } from '@babel/parser';
 

@@ -1,14 +1,13 @@
 import type { Position } from '@vue/compiler-dom';
 import type { UnpluginFactory } from 'unplugin';
-import type { Options } from '../types';
-
 import { createUnplugin } from 'unplugin';
 import MagicString from 'magic-string';
+import type { Options } from '../types';
+import { TRACE_ID } from './constants';
 import { filter_ID } from './filter_ID';
 import { parse_ID } from './parse_ID';
 import { transform_SFC } from './transform_SFC';
 import { transform_JSX } from './transform_JSX';
-import { TRACE_ID } from './constants';
 
 export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
   if (process.env.NODE_ENV !== 'development') {

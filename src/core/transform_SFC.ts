@@ -5,7 +5,6 @@ import type {
   RootNode,
   TextNode,
 } from '@vue/compiler-dom';
-
 import { parse, transform } from '@vue/compiler-dom';
 import { NodeTypes, TagTypes } from './constants';
 import { transform_JSX } from './transform_JSX';
