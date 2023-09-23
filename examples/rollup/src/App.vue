@@ -19,7 +19,7 @@ export default Vue.extend({
         <img src="../public/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
-    <HelloWorld msg="Roolup + Vue" />
+    <HelloWorld msg="Roolup + Vue2" />
   </div>
 </template>
 
