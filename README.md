@@ -40,7 +40,7 @@ jsx without
 ```tsx
 // src/App.tsx
 export default function App() {
-  return <div>hello word</div>
+  return <div>hello word</div>;
 }
 ```
 
@@ -49,7 +49,7 @@ with
 ```tsx
 // src/App.tsx
 export default function App() {
-  return <div __source="/src/App.tsx:3:9">hello word</div>
+  return <div __source="/src/App.tsx:3:9">hello word</div>;
 }
 ```
 
@@ -68,13 +68,13 @@ The bad news is that for `jsx` syntax support, you can't use it with [jsx-vue2](
 ```ts
 // main.ts
 import Vue from 'vue';
-import VueSource from "unplugin-vue-source/vue";
-import App from "./App.vue";
+import VueSource from 'unplugin-vue-source/vue';
+import App from './App.vue';
 
 Vue.use(VueSource);
 
 new Vue({
-  el: "#app",
+  el: '#app',
   render: (h) => h(App),
 });
 ```
@@ -84,12 +84,12 @@ new Vue({
 ```ts
 // main.ts
 import { createApp } from 'vue';
-import VueSource from "unplugin-vue-source/vue";
-import App from "./App.vue";
+import VueSource from 'unplugin-vue-source/vue';
+import App from './App.vue';
 
 const app = createApp(App);
 app.use(VueSource);
-app.mount("#app");
+app.mount('#app');
 ```
 
 ## Plugins
@@ -101,11 +101,13 @@ You need to make sure that `VueSource` is executed before vue compiles the plugi
 
 ```ts
 // vite.config.ts
-import VueSource from "unplugin-vue-source/vite";
+import VueSource from 'unplugin-vue-source/vite';
 
 export default defineConfig({
   plugins: [
-    VueSource({ /* options */ }),
+    VueSource({
+      /* options */
+    }),
     // other plugins
   ],
 });
@@ -118,11 +120,13 @@ export default defineConfig({
 
 ```ts
 // rollup.config.js
-import VueSource from "unplugin-vue-source/rollup";
+import VueSource from 'unplugin-vue-source/rollup';
 
 export default {
   plugins: [
-    VueSource({ /* options */ }),
+    VueSource({
+      /* options */
+    }),
     // other plugins
   ],
 };
@@ -137,7 +141,9 @@ export default {
 // webpack.config.js
 module.exports = {
   plugins: [
-    require("unplugin-vue-source/webpack")({ /* options */ }),
+    require('unplugin-vue-source/webpack')({
+      /* options */
+    }),
     // other plugins
   ],
 };
@@ -152,7 +158,9 @@ module.exports = {
 // rspack.config.js
 module.exports = {
   plugins: [
-    require("unplugin-vue-source/rspack")({ /* options */ }),
+    require('unplugin-vue-source/rspack')({
+      /* options */
+    }),
     // other plugins
   ],
 };
@@ -168,7 +176,9 @@ module.exports = {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require("unplugin-vue-source/webpack")({ /* options */ }),
+      require('unplugin-vue-source/webpack')({
+        /* options */
+      }),
       // other plugins
     ],
   },
@@ -182,20 +192,22 @@ module.exports = {
 
 ```ts
 // esbuild.config.js
-import { build } from "esbuild";
-import VueSource from "unplugin-vue-source/esbuild";
+import { build } from 'esbuild';
+import VueSource from 'unplugin-vue-source/esbuild';
 
-build({ 
+build({
   plugins: [
-    VueSource({ /* options */ }),
+    VueSource({
+      /* options */
+    }),
     // other plugins
   ],
 });
 ```
 
 <br></details>
- 
- ## Configuration
+
+## Configuration
 
 The following show the default values of the configuration
 
@@ -203,8 +215,95 @@ The following show the default values of the configuration
 VueSource({
   // source root path
   root: process.cwd(),
-  
+
   // generate sourceMap
   sourceMap: false,
-})
+});
 ```
+
+## Playground
+
+<table>
+  <tbody>
+    <tr>
+      <th align="left">Rollup + Vue2</th>
+      <th>
+        <a
+          target="_black"
+          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
+        >
+          Source
+        </a>
+      </th>
+      <th>
+        <a
+          target="_black"
+          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
+        >
+          CodeSandbox
+        </a>
+      </th>
+      <th>
+        <a
+          target="_black"
+          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
+        >
+          StackBlitz
+        </a>
+      </th>
+    </tr>
+    <tr>
+      <th align="left">Vite + Vue3</th>
+      <th>
+        <a
+          target="_black"
+          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
+        >
+          Source
+        </a>
+      </th>
+            <th>
+        <a
+          target="_black"
+          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
+        >
+          CodeSandbox
+        </a>
+      </th>
+      <th>
+        <a
+          target="_black"
+          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
+        >
+          StackBlitz
+        </a>
+      </th>
+    </tr>
+    <tr>
+      <th align="left">Webpack + Vue3</th>
+      <th>
+        <a
+          target="_black"
+          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
+        >
+          Source
+        </a>
+      </th>        <th>
+        <a
+          target="_black"
+          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
+        >
+          CodeSandbox
+        </a>
+      </th>
+      <th>
+        <a
+          target="_black"
+          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
+        >
+          StackBlitz
+        </a>
+      </th>
+    </tr>
+  </tbody>
+</table>
