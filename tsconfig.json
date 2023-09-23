@@ -8,8 +8,7 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "jsx": "preserve"
-  }, 
-  "exclude": ["examples/**"]
+    "skipLibCheck": true
+  },
+  "exclude": ["examples/**", "test/fixtures/**"]
 }

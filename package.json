@@ -17,16 +17,6 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
-    "./nuxt": {
-      "types": "./dist/nuxt.d.ts",
-      "require": "./dist/nuxt.js",
-      "import": "./dist/nuxt.mjs"
-    },
-    "./resolvers": {
-      "types": "./dist/resolvers.d.ts",
-      "require": "./dist/resolvers.js",
-      "import": "./dist/resolvers.mjs"
-    },
     "./rollup": {
       "types": "./dist/rollup.d.ts",
       "require": "./dist/rollup.js",
@@ -83,7 +73,10 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "play": "pnpm --filter @examples/vite dev",
+    "play:rollup": "pnpm --filter @examples/rollup dev",
+    "play:vite": "pnpm --filter @examples/vite dev",
+    "play:webpack": "pnpm --filter @examples/webpack dev",
+    "test": "pnpm build && vitest",
     "prepublishOnly": "pnpm build",
     "lint": "prettier -c '**/*.{ts,tsx,vue}'",
     "format": "prettier -w '**/*.{ts,tsx,vue}'",
@@ -104,8 +97,10 @@
     "@types/node": "^20.6.0",
     "bumpp": "^9.2.0",
     "changelogithub": "^0.13.0",
+    "fast-glob": "^3.3.1",
     "prettier": "^3.0.3",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
   }
 }

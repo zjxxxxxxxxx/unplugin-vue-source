@@ -61,6 +61,10 @@ npm i -D unplugin-vue-source
 
 ## Vue2
 
+The bad news is that for `jsx` syntax support, you can't use it with [jsx-vue2](https://github.com/vuejs/jsx-vue2) because it doesn't support props that start with `_`. Click [issues](https://github.com/vuejs/jsx-vue2/issues/310) to learn more. The good news is that there are no problems with using [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx).
+
+[jsx example](./examples//rollup/rollup.config.js)
+
 ```ts
 // main.ts
 import Vue from 'vue';
@@ -89,6 +93,8 @@ app.mount("#app");
 ```
 
 ## Plugins
+
+You need to make sure that `VueSource` is executed before vue compiles the plugin for execution.
 
 <details>
 <summary>Vite</summary><br>
