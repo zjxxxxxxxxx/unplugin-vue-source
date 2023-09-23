@@ -9,10 +9,7 @@ import { parse, transform } from '@vue/compiler-dom';
 import { NodeTypes, TagTypes } from './constants';
 import { transform_JSX } from './transform_JSX';
 
-export function transform_SFC(
-  code: string,
-  transformer: (pos: Position) => void,
-) {
+export function transform_SFC(code: string, cb: (pos: Position) => void) {
   const ast = parse(code);
   transform(ast, {
     nodeTransforms: [
@@ -22,10 +19,10 @@ export function transform_SFC(
           TagTypes.includes(node.tagType)
         ) {
           const { start } = node.loc;
-
-          transformer({
+          const offset = start.offset + node.tag.length + 1;
+          cb({
             ...start,
-            offset: start.offset + node.tag.length + 1,
+            offset,
           });
         }
       },
@@ -34,7 +31,7 @@ export function transform_SFC(
 
   const jsxOpts = resolveJsxOptions(ast);
   if (jsxOpts) {
-    transform_JSX(jsxOpts.code, transformer, jsxOpts);
+    transform_JSX(jsxOpts.code, cb, jsxOpts);
   }
 }
 

@@ -9,10 +9,10 @@ export const tsup: Options = {
   shims: false,
   cjsInterop: true,
   external: [
-    '@vue/compiler-dom',
     '@babel/core',
     '@babel/parser',
     '@babel/plugin-syntax-jsx',
     '@babel/plugin-syntax-typescript',
+    '@vue/compiler-dom',
   ],
 };

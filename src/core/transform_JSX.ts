@@ -4,7 +4,7 @@ import { parse, ParserPlugin } from '@babel/parser';
 
 export function transform_JSX(
   code: string,
-  transformer: (pos: Position) => void,
+  cb: (pos: Position) => void,
   options: {
     isTsx?: boolean;
     startIndex?: number;
@@ -12,7 +12,7 @@ export function transform_JSX(
     startColumn?: number;
   },
 ) {
-  const { isTsx, startIndex = 0, startLine = 1, startColumn = 0 } = options;
+  const { isTsx, startIndex = 0, startLine = 1, startColumn = 1 } = options;
 
   const plugins: ParserPlugin[] = ['jsx'];
   if (isTsx) {
@@ -23,21 +23,23 @@ export function transform_JSX(
     sourceType: 'unambiguous',
     plugins,
     startLine,
-    startColumn,
-  })!;
+    // babel start at 0
+    startColumn: startColumn - 1,
+  });
   traverse(ast, {
     JSXOpeningElement({ node }) {
       const nameNode = node.name;
-      if (!nameNode) {
-        // <></> return
-        return;
-      }
+      // <></> return
+      if (!nameNode) return;
 
       const { start } = node.loc!;
       const name = getJSXElementName(nameNode);
-      transformer({
+      const offset = start.index + startIndex + name.length + 1;
+      cb({
         ...start,
-        offset: start.index + startIndex + name.length + 1,
+        // babel starts at 0, so we need to add 1
+        column: start.column + 1,
+        offset,
       });
     },
   });

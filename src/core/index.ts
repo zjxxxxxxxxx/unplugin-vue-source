@@ -1,13 +1,8 @@
-import type { Position } from '@vue/compiler-dom';
 import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
-import MagicString from 'magic-string';
 import type { Options } from '../types';
-import { TRACE_ID } from './constants';
 import { filter_ID } from './filter_ID';
-import { parse_ID } from './parse_ID';
-import { transform_SFC } from './transform_SFC';
-import { transform_JSX } from './transform_JSX';
+import { transform } from './transform';
 
 export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -16,36 +11,25 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
     };
   }
 
-  const { root = process.cwd(), sourceMap = false } = options;
+  const opts = resolveOptions(options);
 
   return {
     name: 'unplugin-vue-source',
     enforce: 'pre',
     transformInclude: filter_ID,
     transform(code, id) {
-      const s = new MagicString(code);
-
-      const parsed = parse_ID(id, root);
-      if (parsed.isSfc) {
-        transform_SFC(code, replace);
-      } else if (parsed.isJsx) {
-        transform_JSX(code, replace, parsed);
-      }
-
-      function replace(pos: Position) {
-        const { offset, line, column } = pos;
-        s.prependLeft(
-          offset,
-          ` ${TRACE_ID}="${parsed.file}:${line}:${column}"`,
-        );
-      }
-
-      return {
-        code: s.toString(),
-        map: sourceMap ? s.generateMap() : null,
-      };
+      return transform(code, id, opts);
     },
   };
 };
+
+function resolveOptions(options: Options): Required<Options> {
+  const { root = process.cwd(), sourceMap = false } = options;
+
+  return {
+    root,
+    sourceMap,
+  };
+}
 
 export default /* #__PURE__ */ createUnplugin(unpluginFactory);
