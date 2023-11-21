@@ -221,89 +221,10 @@ VueSource({
 });
 ```
 
-## Playground
+## Playgrounds
 
-<table>
-  <tbody>
-    <tr>
-      <th align="left">Rollup + Vue2</th>
-      <th>
-        <a
-          target="_black"
-          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
-        >
-          Source
-        </a>
-      </th>
-      <th>
-        <a
-          target="_black"
-          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
-        >
-          CodeSandbox
-        </a>
-      </th>
-      <th>
-        <a
-          target="_black"
-          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup"
-        >
-          StackBlitz
-        </a>
-      </th>
-    </tr>
-    <tr>
-      <th align="left">Vite + Vue3</th>
-      <th>
-        <a
-          target="_black"
-          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
-        >
-          Source
-        </a>
-      </th>
-            <th>
-        <a
-          target="_black"
-          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
-        >
-          CodeSandbox
-        </a>
-      </th>
-      <th>
-        <a
-          target="_black"
-          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite"
-        >
-          StackBlitz
-        </a>
-      </th>
-    </tr>
-    <tr>
-      <th align="left">Webpack + Vue3</th>
-      <th>
-        <a
-          target="_black"
-          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
-        >
-          Source
-        </a>
-      </th>        <th>
-        <a
-          target="_black"
-          href="https://codesandbox.io/p/sandbox/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
-        >
-          CodeSandbox
-        </a>
-      </th>
-      <th>
-        <a
-          target="_black"
-          href="https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack"
-        >
-          StackBlitz
-        </a>
-      </th>
-    </tr>
-  </tbody>
-</table>
+| Source code                                                                                     | Online trial                                                                                           |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [Rollup + Vue2](https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup)   | [StackBlitz](https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/rollup)  |
+| [Vite + Vue3](https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite)       | [StackBlitz](https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/vite)    |
+| [Webpack + Vue3](https://github.com/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack) | [StackBlitz](https://stackblitz.com/github/zjxxxxxxxxx/unplugin-vue-source/tree/main/examples/webpack) |
