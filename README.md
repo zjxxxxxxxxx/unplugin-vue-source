@@ -226,7 +226,7 @@ interface Options {
    */
   sourceMap?: boolean;
 
-  /** @default '**\/*.{vue,jsx.tsx}' */
+  /** @default '**\/*.{vue,jsx,tsx}' */
   include?: string | RegExp | (string | RegExp)[];
   /** @default 'node_modules/**' */
   exclude?: string | RegExp | (string | RegExp)[];
