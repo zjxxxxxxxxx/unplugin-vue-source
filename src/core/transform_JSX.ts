@@ -35,6 +35,7 @@ export function transform_JSX(
       const { start } = node.loc!;
       const name = getJSXElementName(nameNode);
       const offset = start.index + startIndex + name.length + 1;
+
       cb({
         ...start,
         // babel starts at 0, so we need to add 1

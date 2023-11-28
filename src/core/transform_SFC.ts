@@ -20,10 +20,8 @@ export function transform_SFC(code: string, cb: (pos: Position) => void) {
         ) {
           const { start } = node.loc;
           const offset = start.offset + node.tag.length + 1;
-          cb({
-            ...start,
-            offset,
-          });
+
+          cb({ ...start, offset });
         }
       },
     ],
@@ -49,6 +47,8 @@ function resolveJsxOptions(ast: RootNode) {
   ) as AttributeNode;
   if (!langProp) return;
 
+  // <script lang="jsx">...</script>
+  // <script lang="tsx">...</script>
   const lang = langProp.value?.content;
   const isTsx = lang === 'tsx';
   const isJsx = isTsx || lang === 'jsx';

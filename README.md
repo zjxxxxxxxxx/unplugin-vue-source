@@ -212,13 +212,25 @@ build({
 The following show the default values of the configuration
 
 ```ts
-VueSource({
-  // source root path
-  root: process.cwd(),
+interface Options {
+  /**
+   * source root path
+   *
+   * @default process.cwd()
+   */
+  root?: string;
+  /**
+   * generate sourceMap
+   *
+   * @default false
+   */
+  sourceMap?: boolean;
 
-  // generate sourceMap
-  sourceMap: false,
-});
+  /** @default '**\/*.{vue,jsx.tsx}' */
+  include?: string | RegExp | (string | RegExp)[];
+  /** @default 'node_modules/**' */
+  exclude?: string | RegExp | (string | RegExp)[];
+}
 ```
 
 ## Playgrounds
