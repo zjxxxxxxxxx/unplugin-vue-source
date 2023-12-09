@@ -2,11 +2,12 @@ import { type UnpluginFactory, createUnplugin } from 'unplugin';
 import { createFilter } from '@rollup/pluginutils';
 import { type ResolvedOptions, type Options } from '../types';
 import { TRACE_ID } from './constants';
+import { isDev } from './isDev';
 import { parse_ID } from './parse_ID';
 import { transform } from './transform';
 
 export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
-  if (process.env.NODE_ENV !== 'development') {
+  if (!isDev()) {
     return {
       name: 'unplugin-vue-source',
     };
