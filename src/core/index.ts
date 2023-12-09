@@ -23,7 +23,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
     transformInclude(id) {
       const { file, isSfc, query } = parse_ID(id);
 
-      if (filter(file)) {
+      if (query.raw == null && filter(file)) {
         if (isSfc && query.type !== 'template') {
           return (
             // vite-plugin-vue
