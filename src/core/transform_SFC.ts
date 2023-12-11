@@ -1,15 +1,21 @@
-import type {
-  ElementNode,
-  AttributeNode,
-  Position,
-  RootNode,
-  TextNode,
+import {
+  type ElementNode,
+  type AttributeNode,
+  type Position,
+  type RootNode,
+  type TextNode,
+  parse,
+  transform,
 } from '@vue/compiler-dom';
-import { parse, transform } from '@vue/compiler-dom';
+import { type ResolvedOptions } from '../types';
 import { NodeTypes, TagTypes } from './constants';
 import { transform_JSX } from './transform_JSX';
 
-export function transform_SFC(code: string, cb: (pos: Position) => void) {
+export function transform_SFC(
+  code: string,
+  cb: (pos: Position) => void,
+  opts: ResolvedOptions,
+) {
   const ast = parse(code);
   transform(ast, {
     nodeTransforms: [
@@ -27,13 +33,13 @@ export function transform_SFC(code: string, cb: (pos: Position) => void) {
     ],
   });
 
-  const jsxOpts = resolveJsxOptions(ast);
+  const jsxOpts = resolveJsxOptsByScript(ast);
   if (jsxOpts) {
-    transform_JSX(jsxOpts.code, cb, jsxOpts);
+    transform_JSX(jsxOpts.code, cb, jsxOpts, opts);
   }
 }
 
-function resolveJsxOptions(ast: RootNode) {
+function resolveJsxOptsByScript(ast: RootNode) {
   const scriptNode = (ast.children as ElementNode[]).find(
     (node) => node.tag === 'script',
   );

@@ -1,6 +1,7 @@
-import type { Position } from '@vue/compiler-dom';
+import { type Position } from '@vue/compiler-dom';
 import { traverse, types as t } from '@babel/core';
 import { parse, ParserPlugin } from '@babel/parser';
+import { type ResolvedOptions } from '../types';
 
 export function transform_JSX(
   code: string,
@@ -11,17 +12,19 @@ export function transform_JSX(
     startLine?: number;
     startColumn?: number;
   },
+  opts: ResolvedOptions,
 ) {
   const { isTsx, startIndex = 0, startLine = 1, startColumn = 1 } = options;
 
-  const plugins: ParserPlugin[] = ['jsx'];
+  const pluginSet = new Set(opts.babelParserPlugins);
+  pluginSet.add('jsx');
   if (isTsx) {
-    plugins.push('typescript');
+    pluginSet.add('typescript');
   }
 
   const ast = parse(code, {
     sourceType: 'unambiguous',
-    plugins,
+    plugins: [...pluginSet] as ParserPlugin[],
     startLine,
     // babel start at 0
     startColumn: startColumn - 1,

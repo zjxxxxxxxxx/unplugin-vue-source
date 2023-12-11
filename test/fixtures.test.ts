@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { extname, join, resolve } from 'node:path';
+import { basename, dirname, extname, join, resolve } from 'node:path';
 import { expect, test } from 'vitest';
 import { format, Options } from 'prettier';
 import fg from 'fast-glob';
@@ -19,7 +19,11 @@ test.each(fixtures)('transform %s', async (name) => {
   const input = readCodeString(filename);
 
   const output = readCodeString(filename, `output${extname(filename)}`);
-  const result = transform(input, filename, options);
+  const result = transform(input, filename, options)!;
+
+  if (basename(dirname(name)) === 'vue-skip') {
+    return expect(result).toBeUndefined();
+  }
 
   expect(
     await formatCode(result.code, {
@@ -35,7 +39,7 @@ test.each(fixtures)('transform %s', async (name) => {
       }),
     ).toEqual(sourceMap);
   } else {
-    expect(result.map).toBe(null);
+    expect(result.map).toBeNull();
   }
 });
 

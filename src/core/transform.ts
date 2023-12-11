@@ -6,16 +6,20 @@ import { parse_ID } from './parse_ID';
 import { transform_SFC } from './transform_SFC';
 import { transform_JSX } from './transform_JSX';
 
-export function transform(code: string, id: string, options: ResolvedOptions) {
-  const { root, sourceMap } = options;
+const skipRE = new RegExp(` ${TRACE_ID}=['"].+:[0-9]+:[0-9]+['"]`);
+
+export function transform(code: string, id: string, opts: ResolvedOptions) {
+  if (skipRE.test(code)) return;
+
+  const { root, sourceMap } = opts;
 
   const s = new MagicString(code);
   const parsed = parse_ID(id, root);
 
   if (parsed.isSfc) {
-    transform_SFC(code, replace);
+    transform_SFC(code, replace, opts);
   } else {
-    transform_JSX(code, replace, parsed);
+    transform_JSX(code, replace, parsed, opts);
   }
 
   function replace(pos: Position) {
