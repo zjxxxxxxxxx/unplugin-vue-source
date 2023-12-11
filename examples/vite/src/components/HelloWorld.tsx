@@ -1,3 +1,5 @@
+import Github from './Github.vue';
+
 export default function HelloWorld({ msg }: { msg: string }) {
   return (
     <>
@@ -6,12 +8,7 @@ export default function HelloWorld({ msg }: { msg: string }) {
         Inspect the element to see the <code>__source</code>
       </p>
       <p>
-        <a
-          target="_black"
-          href="https://github.com/zjxxxxxxxxx/unplugin-vue-source"
-        >
-          Github
-        </a>
+        <Github />
       </p>
     </>
   );

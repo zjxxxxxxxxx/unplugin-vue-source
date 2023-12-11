@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue';
+import Github from './Github.vue';
 
 export default defineComponent({
   props: { msg: String },
@@ -10,12 +11,7 @@ export default defineComponent({
           Inspect the element to see the <code>__source</code>
         </p>
         <p>
-          <a
-            target="_black"
-            href="https://github.com/zjxxxxxxxxx/unplugin-vue-source"
-          >
-            Github
-          </a>
+          <Github />
         </p>
       </div>
     );

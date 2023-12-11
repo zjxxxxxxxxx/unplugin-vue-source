@@ -11,4 +11,7 @@ export default defineConfig({
     jsxFragment: 'Fragment',
     jsxInject: "import { h, Fragment } from 'vue';",
   },
+  server: {
+    port: 3000,
+  },
 });

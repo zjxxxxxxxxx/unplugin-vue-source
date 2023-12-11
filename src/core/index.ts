@@ -1,7 +1,6 @@
 import { type UnpluginFactory, createUnplugin } from 'unplugin';
 import { createFilter } from '@rollup/pluginutils';
 import { type ResolvedOptions, type Options } from '../types';
-import { TRACE_ID } from './constants';
 import { isDev } from './isDev';
 import { parse_ID } from './parse_ID';
 import { transform } from './transform';
@@ -21,21 +20,8 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
     enforce: 'pre',
 
     transformInclude(id) {
-      const { file, isSfc, query } = parse_ID(id);
-
-      if (query.raw == null && filter(file)) {
-        if (isSfc && query.type !== 'template') {
-          return (
-            // vite-plugin-vue
-            !query[TRACE_ID] &&
-            // rollup-plugin-vue
-            !query['rollup-plugin-vue']
-          );
-        }
-
-        // vue cli | vue-loader | tsx | jsx
-        return true;
-      }
+      const { file, query } = parse_ID(id);
+      return query.raw == null && filter(file);
     },
     transform(code, id) {
       return transform(code, id, opts);
@@ -45,10 +31,11 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
 
 function resolveOptions(opts: Options): ResolvedOptions {
   return {
-    root: opts.root ?? process.cwd(),
-    sourceMap: opts.sourceMap ?? false,
     include: opts.include ?? '**/*.{vue,jsx,tsx}',
     exclude: opts.exclude ?? 'node_modules/**',
+    root: opts.root ?? process.cwd(),
+    sourceMap: opts.sourceMap ?? false,
+    babelParserPlugins: opts.babelParserPlugins ?? [],
   };
 }
 
