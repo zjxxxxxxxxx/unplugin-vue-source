@@ -14,5 +14,7 @@ export const tsup: Options = {
     '@babel/plugin-syntax-jsx',
     '@babel/plugin-syntax-typescript',
     '@vue/compiler-dom',
+    '@mdx-js/mdx',
+    'unist-util-visit',
   ],
 };

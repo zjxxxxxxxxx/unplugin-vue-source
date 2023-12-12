@@ -27,7 +27,12 @@ test.each(fixtures)('transform %s', async (name) => {
 
   expect(
     await formatCode(result.code, {
-      parser: extname(filename) === '.vue' ? 'vue' : 'babel',
+      parser:
+        extname(filename) === '.vue'
+          ? 'vue'
+          : extname(filename).startsWith('.md')
+          ? 'mdx'
+          : 'babel',
     }),
   ).toBe(output);
 

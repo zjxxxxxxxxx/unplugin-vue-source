@@ -16,6 +16,7 @@ export function parse_ID(id: string, root = '') {
     file: file.replace(root, ''),
     isSfc: ext === 'vue',
     isTsx: ext.startsWith('ts'),
+    isMdx: ext.startsWith('md'),
     query,
   };
 }
