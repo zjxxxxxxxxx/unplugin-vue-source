@@ -14,7 +14,7 @@ export function transform(code: string, id: string, opts: ResolvedOptions) {
 
   const { root, sourceMap } = opts;
 
-  const s = new MagicString(code);
+  let s: MagicString;
   const parsed = parse_ID(id, root);
 
   if (parsed.isSfc) {
@@ -26,12 +26,17 @@ export function transform(code: string, id: string, opts: ResolvedOptions) {
   }
 
   function replace(pos: Position) {
+    s ||= new MagicString(code);
+
     const { offset, line, column } = pos;
     s.prependLeft(offset, ` ${TRACE_ID}="${parsed.file}:${line}:${column}"`);
   }
 
-  return {
-    code: s.toString(),
-    map: sourceMap ? s.generateMap() : null,
-  };
+  // @ts-ignore
+  if (s) {
+    return {
+      code: s.toString(),
+      map: sourceMap ? s.generateMap() : null,
+    };
+  }
 }

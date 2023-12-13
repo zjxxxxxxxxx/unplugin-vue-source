@@ -1,15 +1,16 @@
 import { type Position } from '@vue/compiler-dom';
-import { type Processor } from '@mdx-js/mdx/internal-create-format-aware-processors';
-import { createProcessor } from '@mdx-js/mdx';
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { mdxJsxFromMarkdown } from 'mdast-util-mdx-jsx';
+import { mdxjs } from 'micromark-extension-mdxjs';
 import { visit } from 'unist-util-visit';
 
 const mdxJsxRE = /^mdxJsx/;
 
-let processor: Processor;
 export function transform_MDX(code: string, cb: (pos: Position) => void) {
-  processor ||= createProcessor({});
-
-  const ast = processor.parse(code);
+  const ast = fromMarkdown(code, 'utf-8', {
+    extensions: [mdxjs()],
+    mdastExtensions: [mdxJsxFromMarkdown()],
+  });
   visit(
     ast,
     (node) => mdxJsxRE.test(node.type),

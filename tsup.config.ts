@@ -6,7 +6,6 @@ export const tsup: Options = {
   dts: true,
   splitting: true,
   clean: true,
-  shims: false,
   cjsInterop: true,
   external: [
     '@babel/core',
@@ -14,7 +13,9 @@ export const tsup: Options = {
     '@babel/plugin-syntax-jsx',
     '@babel/plugin-syntax-typescript',
     '@vue/compiler-dom',
-    '@mdx-js/mdx',
+    'mdast-util-from-markdown',
+    'mdast-util-mdx-jsx',
+    'micromark-extension-mdxjs',
     'unist-util-visit',
   ],
 };
