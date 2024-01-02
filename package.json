@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue-source",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@8.6.8",
   "description": "Add a __source prop to all Elements",
   "author": "zjxxxxxxxxx <954270063@qq.com>",
