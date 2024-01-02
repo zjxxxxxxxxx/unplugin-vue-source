@@ -91,10 +91,10 @@
     "@rollup/pluginutils": "^5.0.5",
     "@vue/compiler-dom": "^3.3.4",
     "magic-string": "^0.30.3",
-    "mdast-util-from-markdown": "^2.0.0",
-    "mdast-util-mdx-jsx": "^3.0.0",
-    "micromark-extension-mdxjs": "^3.0.0",
-    "unist-util-visit": "^5.0.0",
+    "mdast-util-from-markdown": "^0.8.5",
+    "mdast-util-mdx-jsx": "^0.1.4",
+    "micromark-extension-mdxjs": "^0.3.0",
+    "unist-util-visit": "^2.0.3",
     "unplugin": "^1.5.1"
   },
   "devDependencies": {
