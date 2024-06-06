@@ -8,7 +8,7 @@ Add a \_\_source prop to all Elements.
 
 - 🌈 Supports `Vue2` and `Vue3`.
 - 🪐 Support add to `<Component/>`.
-- ✨ JSX support in `.vue`, `.jsx`, `.tsx`.
+- ✨ JSX support in `.vue`, `.jsx`, `.tsx`, `.mdx`.
 - 😃 Supports `Vite`, `Webpack`, `Rspack`, `Vue CLI`, `Rollup`, `esbuild`.
 
 > For development only
@@ -213,11 +213,6 @@ The following show the default values of the configuration
 
 ```ts
 export interface Options {
-  /** @default '**\/*.{vue,jsx,tsx}' */
-  include?: string | RegExp | (string | RegExp)[];
-  /** @default 'node_modules/**' */
-  exclude?: string | RegExp | (string | RegExp)[];
-
   /**
    * source root path
    *
@@ -230,13 +225,20 @@ export interface Options {
    * @default false
    */
   sourceMap?: boolean;
-
   /**
    * Array containing the plugins that you want to enable.
    *
    * @default ['jsx', 'typescript']
    */
   babelParserPlugins?: ParserPlugin[];
+  /**
+   * @default '\/**\/*.{vue,jsx,tsx}'
+   */
+  include?: string | RegExp | (string | RegExp)[];
+  /**
+   * @default '\/node_modules\/**\/*'
+   */
+  exclude?: string | RegExp | (string | RegExp)[];
 }
 ```
 

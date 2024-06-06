@@ -1,6 +1,6 @@
 import { type Position } from '@vue/compiler-dom';
 import { traverse, types as t } from '@babel/core';
-import { parse, ParserPlugin } from '@babel/parser';
+import { parse } from '@babel/parser';
 import { type ResolvedOptions } from '../types';
 
 export function transform_JSX(
@@ -24,7 +24,7 @@ export function transform_JSX(
 
   const ast = parse(code, {
     sourceType: 'unambiguous',
-    plugins: [...pluginSet] as ParserPlugin[],
+    plugins: Array.from(pluginSet),
     startLine,
     // babel start at 0
     startColumn: startColumn - 1,
