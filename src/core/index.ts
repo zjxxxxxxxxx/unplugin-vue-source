@@ -5,7 +5,10 @@ import { isDev } from './isDev';
 import { parse_ID } from './parse_ID';
 import { transform } from './transform';
 
-export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
+export const unpluginFactory: UnpluginFactory<Options | undefined> = (
+  options = {},
+  meta,
+) => {
   if (!isDev()) {
     return {
       name: 'unplugin-vue-source',
@@ -14,6 +17,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
 
   const opts = resolveOptions(options);
   const filter = createFilter(opts.include, opts.exclude);
+  const isWebpack = meta.framework === 'webpack';
 
   return {
     name: 'unplugin-vue-source',
@@ -24,7 +28,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
       return query.raw == null && filter(file);
     },
     transform(code, id) {
-      return transform(code, id, opts);
+      return transform(code, id, opts, isWebpack);
     },
   };
 };

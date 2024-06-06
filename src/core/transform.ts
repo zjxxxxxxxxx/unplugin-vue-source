@@ -7,13 +7,18 @@ import { transform_SFC } from './transform_SFC';
 import { transform_MDX } from './transform_MDX';
 import { transform_JSX } from './transform_JSX';
 
-export function transform(code: string, id: string, opts: ResolvedOptions) {
+export function transform(
+  code: string,
+  id: string,
+  opts: ResolvedOptions,
+  isWebpack = false,
+) {
   const { root, sourceMap } = opts;
 
   let s: MagicString;
   const parsed = parse_ID(id, root);
 
-  if (parsed.query[TRACE_ID]) {
+  if (!isWebpack && parsed.query[TRACE_ID]) {
     return;
   }
 
