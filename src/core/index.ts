@@ -31,11 +31,11 @@ export const unpluginFactory: UnpluginFactory<Options> = (options = {}) => {
 
 function resolveOptions(opts: Options): ResolvedOptions {
   return {
-    include: opts.include ?? '**/*.{vue,jsx,tsx}',
-    exclude: opts.exclude ?? 'node_modules/**',
     root: opts.root ?? process.cwd(),
     sourceMap: opts.sourceMap ?? false,
     babelParserPlugins: opts.babelParserPlugins ?? [],
+    include: opts.include ?? '/**/*.{vue,jsx,tsx}',
+    exclude: opts.exclude ?? '/node_modules/**/*',
   };
 }
 
