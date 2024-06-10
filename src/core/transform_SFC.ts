@@ -33,13 +33,13 @@ export function transform_SFC(
     ],
   });
 
-  const jsxOpts = resolveJsxOptsByScript(ast);
+  const jsxOpts = resolveJsxOptsForScript(ast);
   if (jsxOpts) {
     transform_JSX(jsxOpts.code, cb, jsxOpts, opts);
   }
 }
 
-function resolveJsxOptsByScript(ast: RootNode) {
+function resolveJsxOptsForScript(ast: RootNode) {
   const scriptNode = (ast.children as ElementNode[]).find(
     (node) => node.tag === 'script',
   );

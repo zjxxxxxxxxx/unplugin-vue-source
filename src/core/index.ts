@@ -38,8 +38,8 @@ function resolveOptions(opts: Options): ResolvedOptions {
     root: opts.root ?? process.cwd(),
     sourceMap: opts.sourceMap ?? false,
     babelParserPlugins: opts.babelParserPlugins ?? [],
-    include: opts.include ?? '/**/*.{vue,jsx,tsx}',
-    exclude: opts.exclude ?? '/node_modules/**/*',
+    include: opts.include ?? /\.(vue|jsx|tsx|mdx)$/,
+    exclude: opts.exclude ?? /\/node_modules\//,
   };
 }
 
