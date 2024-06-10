@@ -232,11 +232,11 @@ export interface Options {
    */
   babelParserPlugins?: ParserPlugin[];
   /**
-   * @default '\/**\/*.{vue,jsx,tsx}'
+   * @default /\.(vue|jsx|tsx|mdx)$/
    */
   include?: string | RegExp | (string | RegExp)[];
   /**
-   * @default '\/node_modules\/**\/*'
+   * @default /\/node_modules\//
    */
   exclude?: string | RegExp | (string | RegExp)[];
 }
